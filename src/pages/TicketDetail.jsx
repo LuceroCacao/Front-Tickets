@@ -8,7 +8,7 @@ function Pill({ children, kind = "status" }) {
       ? {
           urgent: "bg-red-100 text-red-700",
           high: "bg-orange-100 text-orange-700",
-          medium: "bg-yellow-100 text-yellow-700",
+          medium: "bg-amber-100 text-amber-700",
           low: "bg-gray-100 text-gray-700",
         }
       : {
@@ -63,7 +63,7 @@ export default function TicketDetail() {
         <Link to="/tickets" className="text-sm underline text-blue-600">← Volver</Link>
       </div>
 
-      <section className="border rounded p-4 space-y-2 bg-white">
+      <section className="border rounded-xl p-4 space-y-2 bg-white">
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-medium text-lg">{ticket.title}</h3>
           <Pill kind="priority">{ticket.priority}</Pill>
@@ -72,15 +72,14 @@ export default function TicketDetail() {
         <p className="text-gray-700">{ticket.description}</p>
       </section>
 
-      <section className="border rounded p-4 bg-white">
+      <section className="border rounded-xl p-4 bg-white">
         <div className="font-medium mb-2">Cambiar estado</div>
         <div className="flex gap-2">
           {stateButtons.map((b) => (
             <button
               key={b.to}
               onClick={() => move.mutate(b.to)}
-              className="border rounded px-3 py-1 hover:bg-gray-100"
-              disabled={move.isPending}
+              className="border rounded px-3 py-1 hover:bg-gray-50"
               title={`Mover a: ${b.label}`}
             >
               {b.label}
@@ -89,8 +88,7 @@ export default function TicketDetail() {
         </div>
       </section>
 
-      {/* Secciones futuras */}
-      <section className="border rounded p-4 bg-white">
+      <section className="border rounded-xl p-4 bg-white">
         <div className="font-medium mb-2">Comentarios</div>
         <p className="text-sm text-gray-500">Próximamente…</p>
       </section>
